@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7033E8591E2C540D00849474 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E8581E2C540D00849474 /* AppDelegate.swift */; };
-		7033E85B1E2C540D00849474 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E85A1E2C540D00849474 /* ViewController.swift */; };
+		7033E85B1E2C540D00849474 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E85A1E2C540D00849474 /* MealViewController.swift */; };
 		7033E85E1E2C540D00849474 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7033E85C1E2C540D00849474 /* Main.storyboard */; };
 		7033E8601E2C540D00849474 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7033E85F1E2C540D00849474 /* Assets.xcassets */; };
 		7033E8631E2C540D00849474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7033E8611E2C540D00849474 /* LaunchScreen.storyboard */; };
 		7033E86E1E2C540D00849474 /* FoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E86D1E2C540D00849474 /* FoodTrackerTests.swift */; };
 		7033E8791E2C60FD00849474 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E8781E2C60FD00849474 /* RatingControl.swift */; };
-		7033E87B1E2C7C0E00849474 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E87A1E2C7C0E00849474 /* Meal.swift */; };
+		7033E87F1E2CA38A00849474 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E87E1E2CA38A00849474 /* Meal.swift */; };
+		7033E8831E2CA3F500849474 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E8821E2CA3F500849474 /* MealTableViewCell.swift */; };
+		7033E8851E2CAA4200849474 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033E8841E2CAA4200849474 /* MealTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +32,7 @@
 /* Begin PBXFileReference section */
 		7033E8551E2C540D00849474 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7033E8581E2C540D00849474 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7033E85A1E2C540D00849474 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7033E85A1E2C540D00849474 /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		7033E85D1E2C540D00849474 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7033E85F1E2C540D00849474 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7033E8621E2C540D00849474 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,7 +41,9 @@
 		7033E86D1E2C540D00849474 /* FoodTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerTests.swift; sourceTree = "<group>"; };
 		7033E86F1E2C540D00849474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7033E8781E2C60FD00849474 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
-		7033E87A1E2C7C0E00849474 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		7033E87E1E2CA38A00849474 /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		7033E8821E2CA3F500849474 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		7033E8841E2CAA4200849474 /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +86,15 @@
 			isa = PBXGroup;
 			children = (
 				7033E8581E2C540D00849474 /* AppDelegate.swift */,
-				7033E85A1E2C540D00849474 /* ViewController.swift */,
+				7033E85A1E2C540D00849474 /* MealViewController.swift */,
 				7033E85C1E2C540D00849474 /* Main.storyboard */,
 				7033E85F1E2C540D00849474 /* Assets.xcassets */,
 				7033E8611E2C540D00849474 /* LaunchScreen.storyboard */,
 				7033E8641E2C540D00849474 /* Info.plist */,
 				7033E8781E2C60FD00849474 /* RatingControl.swift */,
-				7033E87A1E2C7C0E00849474 /* Meal.swift */,
+				7033E87E1E2CA38A00849474 /* Meal.swift */,
+				7033E8821E2CA3F500849474 /* MealTableViewCell.swift */,
+				7033E8841E2CAA4200849474 /* MealTableViewController.swift */,
 			);
 			path = FoodTracker;
 			sourceTree = "<group>";
@@ -205,10 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7033E87B1E2C7C0E00849474 /* Meal.swift in Sources */,
-				7033E85B1E2C540D00849474 /* ViewController.swift in Sources */,
+				7033E87F1E2CA38A00849474 /* Meal.swift in Sources */,
+				7033E85B1E2C540D00849474 /* MealViewController.swift in Sources */,
 				7033E8791E2C60FD00849474 /* RatingControl.swift in Sources */,
 				7033E8591E2C540D00849474 /* AppDelegate.swift in Sources */,
+				7033E8851E2CAA4200849474 /* MealTableViewController.swift in Sources */,
+				7033E8831E2CA3F500849474 /* MealTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
