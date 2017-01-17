@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import os.base
+import os.activity
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -14,8 +16,20 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     @IBOutlet weak var photoImageView: UIImageView!
     
+    @IBOutlet weak var ratingControl: RatingControl!
+    
+    // passed by tableViewController for adding new meal
+    var meal:Meal?
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+
     func textFieldDidEndEditing(textField: UITextField) {
-        
+        updateSaveButtonState()
+        navigationItem.title = textField.text
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        saveButton.enabled = false
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -25,7 +39,9 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+     
         nameTextField.delegate = self
+        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,5 +70,35 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         dismissViewControllerAnimated(true, completion: nil)
     }
 
+    // MARK: Navigation
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        // kalo segue menggunakan modal
+//         dismissViewControllerAnimated(true, completion: nil)
+        // kalo segue menggunakan push
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        // mendeteksi segue yang dituju
+        guard let button = sender as? UIBarButtonItem where button === saveButton else {
+            fatalError("The save button was not pressed, cancelling")
+        }
+        
+        let name = nameTextField.text ?? ""
+        let photo = photoImageView.image
+        let rating = ratingControl.rating
+        
+        meal = Meal(name: name, photo: photo, rating: rating)
+    }
+    
+    // MARK: Private Methods
+    private func updateSaveButtonState(){
+        // disable tombol save kalo nilai textfield kosong
+        
+        let text = nameTextField.text ?? ""
+        saveButton.enabled = !text.isEmpty
+    }
 }
 

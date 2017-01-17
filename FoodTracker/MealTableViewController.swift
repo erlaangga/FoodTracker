@@ -20,6 +20,7 @@ class MealTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         loadSampleMeals()
         
     }
@@ -122,4 +123,18 @@ class MealTableViewController: UITableViewController {
         meals += [meal1,meal2,meal3]
     }
 
+    //MARK: Action
+    // dipanggil melalui MealViewController
+    // menggunakan Interface Builder untuk berinteraksi
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.meal{
+            
+            //tambah makanan
+            let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+            meals.append(meal)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+        }
+        
+        
+    }
 }
