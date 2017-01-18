@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import os.base
-import os.activity
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
