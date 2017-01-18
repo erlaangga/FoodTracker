@@ -23,9 +23,12 @@ class MealTableViewController: UITableViewController {
         
         // editlist
         navigationItem.leftBarButtonItem = editButtonItem()
-        
-        loadSampleMeals()
-        
+        if let savedMeals = loadMeals(){
+            meals = savedMeals
+        }
+        else{
+            loadSampleMeals()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +72,7 @@ class MealTableViewController: UITableViewController {
             meals.removeAtIndex(indexPath.row)
             // hapus row
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            saveMeals()
         }
         else if editingStyle == .Insert{
             
@@ -135,6 +139,7 @@ class MealTableViewController: UITableViewController {
         }
     }
     
+    // MARKS: Private Methods
     func loadSampleMeals(){
         let photo1 = UIImage(named: "meal1")
         let photo2 = UIImage(named: "meal2")
@@ -153,6 +158,21 @@ class MealTableViewController: UITableViewController {
         meals += [meal1,meal2,meal3]
     }
 
+    func saveMeals(){
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path!)
+        
+        if isSuccessfulSave{
+            print("Meals successfully save")
+        }
+        else{
+            print("Failed to save Meals")
+        }
+    }
+    
+    func loadMeals()-> [Meal]?{
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as? [Meal]
+    }
+    
     //MARK: Action
     // dipanggil melalui MealViewController
     // menggunakan Interface Builder untuk berinteraksi
@@ -171,8 +191,9 @@ class MealTableViewController: UITableViewController {
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
             }
             
+            saveMeals()
+            
         }
-        
-        
     }
+    
 }

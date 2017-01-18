@@ -23,12 +23,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-u4-LMA">
-                                            <rect key="frame" x="97" y="8" width="215" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yXJ-ZK-DYb">
+                                            <rect key="frame" x="97" y="8" width="206" height="71"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-u4-LMA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="206" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="63y-zW-CEv" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="21" width="206" height="50"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="starSize">
+                                                            <size key="value" width="22" height="22"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="89" placeholderIntrinsicHeight="89" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="cO6-B6-vQp">
                                             <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
                                             <constraints>
@@ -37,15 +53,11 @@
                                                 <constraint firstAttribute="width" constant="89" id="uqF-5h-E9c"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="63y-zW-CEv" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
-                                            <rect key="frame" x="97" y="37" width="206" height="44"/>
-                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="63y-zW-CEv" firstAttribute="leading" secondItem="cO6-B6-vQp" secondAttribute="trailing" constant="8" id="4Au-5P-u5O"/>
-                                        <constraint firstItem="gvg-u4-LMA" firstAttribute="leading" secondItem="cO6-B6-vQp" secondAttribute="trailing" constant="8" id="800-Cg-hJ4"/>
-                                        <constraint firstItem="63y-zW-CEv" firstAttribute="top" secondItem="gvg-u4-LMA" secondAttribute="bottom" constant="8" id="Mps-k8-txg"/>
-                                        <constraint firstItem="63y-zW-CEv" firstAttribute="trailing" secondItem="gvg-u4-LMA" secondAttribute="trailing" id="b73-s5-F0h"/>
+                                        <constraint firstItem="cO6-B6-vQp" firstAttribute="leading" secondItem="HQ1-SR-KcR" secondAttribute="leadingMargin" constant="-8" id="Yoz-F2-FpX"/>
+                                        <constraint firstItem="yXJ-ZK-DYb" firstAttribute="top" secondItem="HQ1-SR-KcR" secondAttribute="topMargin" constant="5" id="c4n-ah-guK"/>
+                                        <constraint firstItem="yXJ-ZK-DYb" firstAttribute="leading" secondItem="cO6-B6-vQp" secondAttribute="trailing" constant="8" id="y5k-PM-5M8"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -191,6 +203,6 @@
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tI2-bE-voq"/>
+        <segue reference="LcJ-XA-mVO"/>
     </inferredMetricsTieBreakers>
 </document>
