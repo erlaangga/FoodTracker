@@ -41,6 +41,13 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Do any additional setup after loading the view, typically from a nib.
      
         nameTextField.delegate = self
+        
+        if let meal = meal{
+            nameTextField.text = meal.name
+            photoImageView.image = meal.photo
+            ratingControl.rating = meal.rating
+            navigationItem.title = meal.name
+        }
         updateSaveButtonState()
     }
 
@@ -50,13 +57,11 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
 
     @IBAction func selectImageFromPhotoLibrary(sender: UITapGestureRecognizer) {
-        
         nameTextField.resignFirstResponder()
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .PhotoLibrary
         imagePickerController.delegate = self
         presentViewController(imagePickerController, animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -65,21 +70,30 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { fatalError("Expected a dictionary containing an image but was provided the following: \(info)")}
-        
         photoImageView.image = selectedImage
         dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {
+        let isPresentingAddMealMode = presentingViewController is UINavigationController
         // kalo segue menggunakan modal
-//         dismissViewControllerAnimated(true, completion: nil)
+        if isPresentingAddMealMode{
+         dismissViewControllerAnimated(true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController {
         // kalo segue menggunakan push
-        navigationController?.popViewControllerAnimated(true)
+        // navigationController?.popViewControllerAnimated(true)
+            owningNavigationController.popViewControllerAnimated(true)
+        }
+        else {
+            fatalError("The MealViewController is not inside a navigation controller")
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
+        
         
         // mendeteksi segue yang dituju
         guard let button = sender as? UIBarButtonItem where button === saveButton else {

@@ -21,6 +21,9 @@ class MealTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        // editlist
+        navigationItem.leftBarButtonItem = editButtonItem()
+        
         loadSampleMeals()
         
     }
@@ -57,26 +60,33 @@ class MealTableViewController: UITableViewController {
         cell.ratingControl.rating = meal.rating
 
         return cell
+        
     }
     
-
-    /*
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete{
+            // hapus data
+            meals.removeAtIndex(indexPath.row)
+            // hapus row
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+        else if editingStyle == .Insert{
+            
+        }
+    }
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ 
+ 
 
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+     
     }
     */
 
@@ -95,15 +105,35 @@ class MealTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+         // Get the new view controller using segue.destinationViewController.
+         // Pass the selected object to the new view controller.
+        switch segue.identifier ?? "" {
+        case "AddItem":
+            print("Adding a new meal")
+        case "ShowDetail":
+            guard let mealDetailViewController = segue.destinationViewController as? MealViewController else {
+                fatalError("Unexpected Destination: \(segue.destinationViewController)")
+            }
+            
+            guard let selectedMealCell = sender as? MealTableViewCell else{
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPathForCell(selectedMealCell) else {
+                fatalError("The selected cell is not being diplayed by the table")
+            }
+            
+            let selectedMeal = meals[indexPath.row]
+            mealDetailViewController.meal = selectedMeal
+            print("Show detail")
+        default:
+            fatalError("Unexpected Segue Identifier \(segue.identifier)")
+        }
     }
-    */
     
     func loadSampleMeals(){
         let photo1 = UIImage(named: "meal1")
@@ -127,12 +157,20 @@ class MealTableViewController: UITableViewController {
     // dipanggil melalui MealViewController
     // menggunakan Interface Builder untuk berinteraksi
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        
         if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.meal{
             
-            //tambah makanan
-            let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
-            meals.append(meal)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                meals[selectedIndexPath.row] = meal
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .Automatic)
+            }
+            else{
+                //tambah makanan
+                let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+                meals.append(meal)
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            }
+            
         }
         
         

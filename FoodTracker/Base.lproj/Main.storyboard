@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealTableViewCell" rowHeight="90" id="DJ1-pT-P3O" customClass="MealTableViewCell" customModule="FoodTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MealTableViewCell" rowHeight="90" id="DJ1-pT-P3O" customClass="MealTableViewCell" customModule="FoodTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DJ1-pT-P3O" id="HQ1-SR-KcR">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvg-u4-LMA">
@@ -52,6 +52,7 @@
                                     <outlet property="nameLabel" destination="gvg-u4-LMA" id="tkp-ky-zyU"/>
                                     <outlet property="photoImageView" destination="cO6-B6-vQp" id="jo5-Qg-KJV"/>
                                     <outlet property="ratingControl" destination="63y-zW-CEv" id="vhg-in-VEq"/>
+                                    <segue destination="BYZ-38-t0r" kind="push" identifier="ShowDetail" id="LcJ-XA-mVO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,7 +64,7 @@
                     <navigationItem key="navigationItem" title="Your Meals" id="XRP-e4-Zoy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RxC-xv-VVe">
                             <connections>
-                                <segue destination="osR-gO-Qj1" kind="modal" id="JbK-1i-YLV"/>
+                                <segue destination="osR-gO-Qj1" kind="modal" identifier="AddItem" modalTransitionStyle="flipHorizontal" id="JbK-1i-YLV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -183,10 +184,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEd-ZJ-0fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="280"/>
+            <point key="canvasLocation" x="1061" y="716"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tI2-bE-voq"/>
+    </inferredMetricsTieBreakers>
 </document>

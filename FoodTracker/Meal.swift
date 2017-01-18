@@ -7,7 +7,9 @@
 //
 
 import UIKit
-class Meal{
+class Meal:NSObject{
+    
+ 
     var name:String
     var photo: UIImage?
     var rating:Int
@@ -26,6 +28,6 @@ class Meal{
         self.rating = rating
     }
     
-    
+
     
 }
